@@ -33,8 +33,8 @@ pipeline {
                     -Dsonar.projectName=Amazon \
                     -Dsonar.projectKey=Amazon \
                     -Dsonar.sources=. \
-                    -Dsonar.host.url=http://13.127.248.100:9000 \
-                    -Dsonar.login=${SONAR_TOKEN}
+                    -Dsonar.sources=src \
+                    -Dsonar.token=$SONAR_TOKEN
                     """
                 }
             }
