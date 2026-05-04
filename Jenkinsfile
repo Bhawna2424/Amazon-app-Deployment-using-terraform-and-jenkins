@@ -24,22 +24,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Bhawna2424/Amazon-app-Deployment-using-terraform-and-jenkins'
             }
         }
-
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh """
-                    $SCANNER_HOME/bin/sonar-scanner \
-                    -Dsonar.projectName=Amazon \
-                    -Dsonar.projectKey=Amazon \
-                    -Dsonar.sources=. \
-                    -Dsonar.sources=src \
-                    -Dsonar.token=$SONAR_TOKEN
-                    """
-                }
-            }
+     stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('sonar-server') {
+            sh """
+            $SCANNER_HOME/bin/sonar-scanner \
+            -Dsonar.projectName=Amazon \
+            -Dsonar.projectKey=Amazon \
+            -Dsonar.sources=src \
+            -Dsonar.token=$SONAR_TOKEN
+            """
         }
-
+    }
+}
+   
         stage('Quality Gate') {
             steps {
                 script {
